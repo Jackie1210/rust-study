@@ -15,3 +15,15 @@ rust 学习笔记
 - cargo run 编译并运行直接产生的可执行文件
 - cargo check 只对rust代码进行check，而不生成可执行文件。在开发阶段可以大大减少时间
 
+## ch2
+
+- let mut x & let x
+
+声明 mut 代表的是可变数据， 不声明就代表这个变量是不可变的
+
+- std::io::stdin
+
+std::io::stdin 返回一个std::io::Stdin的实例,可以当做你在终端进行的标准输入的一种处理
+
+- &
+获取对一个变量的引用
