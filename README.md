@@ -27,3 +27,9 @@ std::io::stdin 返回一个std::io::Stdin的实例,可以当做你在终端进�
 
 - &
 获取对一个变量的引用
+
+- variable with mut VS shadowing
+
+variable with mut可以改变一个变量的值，但是改变这个变量的类型的时候会报错
+
+shadowing 可以使用之前的变量名并且可以改变值和类型 
