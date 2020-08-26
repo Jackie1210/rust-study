@@ -19,17 +19,70 @@ rust 学习笔记
 
 - let mut x & let x
 
-声明 mut 代表的是可变数据， 不声明就代表这个变量是不可变的
+>声明 mut 代表的是可变数据， 不声明就代表这个变量是不可变的
 
 - std::io::stdin
 
-std::io::stdin 返回一个std::io::Stdin的实例,可以当做你在终端进行的标准输入的一种处理
+>std::io::stdin 返回一个std::io::Stdin的实例,可以当做你在终端进行的标准输入的一种处理
 
 - &
-获取对一个变量的引用
+>获取对一个变量的引用
 
 - variable with mut VS shadowing
 
-variable with mut可以改变一个变量的值，但是改变这个变量的类型的时候会报错
+>variable with mut可以改变一个变量的值，但是改变这个变量的类型的时候会报错
 
-shadowing 可以使用之前的变量名并且可以改变值和类型 
+shadowing 可以使用之前的变量名并且可以改变值和类型
+
+### 数据类型
+
+1. rust含有4种数据类型：整数，浮点数，布尔型，字符串
+- 整数类型
+  - i8(-127~128) u8(0, 255)
+  - i16 u16
+  - i32(default) u32
+  - i64 u64
+  - i128 u128
+  - isize usize
+- 浮点数类型
+  - f32 f64
+- 布尔型
+2. 复合类型
+- 元组
+> 不可以扩展和缩小
+```rust
+fn main(){
+  let tup = (500, 6.4, 1);
+  //解构
+  let (x, y, z) = tup;
+
+  let mut num = tup.0
+}
+```
+- 数组
+```rust
+let arr: [i32; 5] = [1,2,3,4,5];
+
+let a = [3;5] // let a = [3,3,3,3,3]
+```
+- 函数
+```rust
+fn main(){
+  let x = 5;
+
+  let y = {
+    let x = 3;
+    x + 1
+  };
+
+  let res = plus_one(y)
+
+  println!("The value of res is {}", res)
+}
+
+fn plus_one(x: i32) -> i32{
+  x + 1
+}
+```
+
+
