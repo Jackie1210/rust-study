@@ -85,4 +85,21 @@ fn plus_one(x: i32) -> i32{
 }
 ```
 
+## ch4 
+
+### ownership
+
+- rust中的每一个值都有一个变量作为它的所有者
+- 每个值一次只可以有一个所有者
+- 当所有者离开作用域，那个值将会被释放
+
+### reference（without ownership）
+
+- 在任何时候，你只能有一个mutable reference 或 任意数量的 immutable references
+- 引用必须总是有效的， 避免出现野指针的情况
+
+### slice (without ownership)
+
+- string文本的类型 是 string slice后的引用。
+> This is also why string literals are immutable; &str is an immutable reference.
 
