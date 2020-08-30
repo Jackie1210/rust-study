@@ -144,3 +144,73 @@ use std::io::{self, Write};
 use std::collections::*;
 ```
 
+
+## ch7 common collections(**Vectors , string & hash map**)
+
+### vectors
+```rust
+// initial
+let v:Vec<i32> = Vec::new()
+
+let v = vec![1,2,3];
+
+// update
+let mut v = Vec::new();
+
+v.push(5);
+v.push(6);
+
+// vectors 同样受所有权限制
+
+let first = &v[0] // not allowed, vec也是引用类型，不可同时出现mutable and immutable
+```
+
+### String
+> String  is a growable, mutable, owned, UTF-8 encoded string type
+
+```rust
+let string = "Hello world";
+
+let s = data.to_string();
+
+//or
+
+let s = String::from("Hello world");
+
+// update string
+
+let mut s = Stringf::from("foo");
+
+s.push_str("bar");
+
+let s3 = String::from("tic");
+let s4 = String::from("tac");
+let s5 = String::from("toe");
+
+let res = format!("{}-{}-{}", s3,s4,s5); // does not take ownership~
+println!("res is {}, s3 is {}", res, s3);
+
+// String 不支持index索引
+1.String is a wapper of Vec<u8>, 转换出来的UTF-8转换的值，所以使用索引是没有意义的
+2.时间复杂度建议是O(1), 但是String的话是rust必须计算从初始到index的有多少个有效的字符
+
+// Hashmap
+
+let text = "cl cll cl ll";
+
+let mut map = HashMap::new();
+
+for word in text.split_whitespace(){
+    let count = map.entry(word).or_insert(0);
+    // or_insert returns a &mut V
+    *count += 1;
+}
+
+println!("{:?}", map);
+// {"cl": 2, "cll": 1, "ll": 1}
+
+
+```
+
+
+
