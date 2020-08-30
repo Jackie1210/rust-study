@@ -103,3 +103,7 @@ fn plus_one(x: i32) -> i32{
 - string文本的类型 是 string slice后的引用。
 > This is also why string literals are immutable; &str is an immutable reference.
 
+## ch5 Struct
+
+结构体类似于JS中的Object
+
