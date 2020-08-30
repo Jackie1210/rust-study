@@ -107,3 +107,19 @@ fn plus_one(x: i32) -> i32{
 
 结构体类似于JS中的Object
 
+在impl中定义的方法可以使用&self获取本身的引用
+
+## ch6 enum
+enum 一种枚举类型，可以包含不同基本类型，包括Struct
+
+enum与struct都支持impl
+
+>有用的枚举类：Option
+ ```rust
+ enum Option<T>{
+   Some<T>,
+   None
+ }
+ ```
+
+enum 类型的值 只可以通过match 和 if let来获得
