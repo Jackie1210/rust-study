@@ -223,6 +223,84 @@ unwrap()
 expect()
 ```
 
+## ch10 generic types
+```rust
+struct Point<T, U>{
+  x: T,
+  y: U
+}
+
+impl<T, U> Point<T, U>{
+  fn mixup<V, W>(self, other: Point<V, W>) -> Point<V, W>{
+    Point {
+      x: self.x,
+      y: other.y,
+    }
+  }
+}
+
+fn main(){
+  let p1 = Ponit {
+    x: 5,
+    y: 10.4
+  };
+
+  let p2 = Point {
+    x: "Hello",
+    y: 'x'
+  };
+
+  let p3 = p1.mixup(p2);
+
+  println!("p3.x = {}, p3.y = {}", p3.x, p3.y);
+
+}
+```
+
+### traits
+
+ 类似于 C++ 的抽象函数
+
+ ```rust
+ pub trait Summary {
+    fn summarize_author(&self) -> String;
+
+    fn summarize(&self) -> String {
+        format!("(Read more from {}...)", self.summarize_author())
+    }
+}
+
+// trait抽象了之后必须impl才可以生效
+pub fn notify(item: &impl Summary) {
+    println!("Breaking news! {}", item.summarize());
+}
+
+// 在泛型中可以不用显式的impl就可以直接impl
+pub fn notify<T: Summary>(item: &T){
+  println!("Breaking news! {}", item.summarize());
+}
+
+pub fn notify(item: &impl Summary, item2: &impl Summary) {
+}
+
+pub fn notify<T: Summary,>(item: &T, item2: &T) {
+}
+
+pub fn notify(item: &(impl Summary + Display)){
+
+}
+
+pub fn notify<T: Summary + Display>(item: &T){
+
+}
+
+fn some_function<T: Display + Clone, U: Clone + Debug>(t: &T, u: &U) -> i32 {}
+
+ ```
+
+
+
+
 
 
 
