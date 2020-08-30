@@ -123,3 +123,24 @@ enum与struct都支持impl
  ```
 
 enum 类型的值 只可以通过match 和 if let来获得
+
+## ch7 mod
+
+mod 声明模块
+
+pub 声明公有
+
+use 使用模块
+
+pub use 则外部文件也可以访问到模块
+
+```rust
+use std::io as IoResult; //别名
+
+use std::{io, com::Ordering};
+
+use std::io::{self, Write};
+
+use std::collections::*;
+```
+
