@@ -212,5 +212,17 @@ println!("{:?}", map);
 
 ```
 
+## ch9 error handling
+```rust
+enum Result<T, E>{
+  Ok(T),
+  Err(E),
+}
+
+unwrap()
+expect()
+```
+
+
 
 
