@@ -298,6 +298,56 @@ fn some_function<T: Display + Clone, U: Clone + Debug>(t: &T, u: &U) -> i32 {}
 
  ```
 
+### lifetimes
+
+lifetimes 主要是为了避免出现悬挂指针（野指针）而需要的一种写法。
+
+> every reference has a lifetime and that you need to specify lifetime parameters for functions or structs that use references
+
+#### lifetime rules
+1. 每一个是引用变量都有一个它自己的生命周期
+```rust
+fn foo<'a, 'b>(x: &'a str, y: &'b str){}
+```
+2. 如果只有一个生命周期变量，生命周期被绑定到所有的输出生命周期变量上面
+```rust
+fn foo<'a>(x: &'a i32) -> &'a i32{}
+```
+3. 如果有多个变量并且第一个变量是&self 或 &mut self, 那么self的生命周期被绑定到所有输出变量上面
+```rust
+impl<'a> ImportantExcerpt<'a> {
+    fn level(&self) -> i32 {
+        3
+    }
+}
+```
+##### static lifetimes
+```rust
+let s: &'static str = "I have a static lifetime.";
+```
+
+##### Together
+```rust
+use std::fmt::Display;
+
+fn longest_with_an_announcement<'a, T>(
+    x: &'a str,
+    y: &'a str,
+    ann: T,
+) -> &'a str
+where
+    T: Display,
+{
+    println!("Announcement! {}", ann);
+    if x.len() > y.len() {
+        x
+    } else {
+        y
+    }
+}
+```
+
+
 
 
 
